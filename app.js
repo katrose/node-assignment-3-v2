@@ -4,8 +4,6 @@
 const express = require('express');
 const path = require('path');
 
-const navBar = require('./navBar');
-
 const subscribeRoutes = require('./routes/subscribeRoutes')
 
 const dotenv = require('dotenv').config();
