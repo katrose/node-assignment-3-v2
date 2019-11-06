@@ -4,7 +4,6 @@
 const express = require('express');
 const path = require('path');
 const navBar = require('./navBar');
-const logForm = require('./logform');
 
 /**
  * EXPRESS/EJS SETUP
@@ -24,8 +23,6 @@ app.use(express.urlencoded({ extended: false }))
 // Serve static assets. Will serve all types of files (css, images) as long as they are in the directory specified in path.join()
 app.use(express.static(path.join(__dirname, 'assets')));
 
-// Write form data to a log file. Alternatively, can add logForm as a callback parameter to the app.post() function below, but I left it here to keep all middleware functions together.
-app.use('/submitform', logForm);
 
 /**
  * ENDPOINTS
