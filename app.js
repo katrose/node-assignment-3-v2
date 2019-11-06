@@ -5,6 +5,8 @@ const express = require('express');
 const path = require('path');
 const navBar = require('./navBar');
 
+const subscribeRoutes = require('./routes/subscribeRoutes')
+
 /**
  * EXPRESS/EJS SETUP
  */
@@ -36,11 +38,10 @@ app.get('/:page', function(request, response) {
 });
 
 /**
- * POST REQUEST
+ * ROUTES
  */
-app.post('/submitform', function(request, response){
-  response.render('thankyou', {data: request.body, navBar: navBar});
-})
+
+ app.use('/subscribe', subscribeRoutes);
 
 /**
  * 404 HANDLER

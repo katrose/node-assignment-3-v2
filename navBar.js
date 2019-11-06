@@ -15,8 +15,8 @@ const navBar = [
   },
 
   {
-    link: "contact",
-    title: "Contact"
+    link: "subscribe",
+    title: "Subscribe"
   }
 ]
 
