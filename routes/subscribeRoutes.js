@@ -14,11 +14,8 @@ subscribeRoutes.get('/', function(request, response) {
  * For error handling: where can errors occur in this code? 
  */
 subscribeRoutes.post('/', function(request, response) {
-  console.log('get /subscribe');
 
-  /**
-   * If subscriber has checked the adult checkbox, then the 'adult' attribute will exist in request.body with a value of 'on'. Otherwise, the attribute will not exist at all. We need to explicitly set this value to true or false in request.body to make it consistent with the Subscriber model. We can then use the request.body object to create a new document and save it to the database with Mongoose.
-   */
+  // If subscriber has checked the adult checkbox, then the 'adult' attribute will exist in request.body with a value of 'on'. Otherwise, the attribute will not exist at all. We need to explicitly set this value to true or false in request.body to make it consistent with the Subscriber model. We can then use the request.body object to create a new document and save it to the database with Mongoose.
   if (request.body.adult) {
     request.body.adult = true;
   } else {
@@ -30,12 +27,10 @@ subscribeRoutes.post('/', function(request, response) {
 
   subscriber.save(err => {
     if (err) {
-
       throw err;
-      // Redirect back to submit page with an error message
     }
 
-    // On success, redirect back to homepage.
+    // On success, render the home page. I'm using render() instead of redirect() to pass this 'success' variable in order to display the success message on the home page. To avoid EJS errors, this variable will have to be inserted into every GET handler that serves the home page.
     response.render("index", {success: true});
   });
 });

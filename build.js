@@ -3,7 +3,7 @@ require('dotenv').config();
 const subscribers = require('./fixtures/subscribers');
 
 /**
- * CONNECT TO DATABASE AND BUILD 'USERS' COLLECTION
+ * CONNECT TO DATABASE AND BUILD 'SUBSCRIBERS' COLLECTION
  */
 const uri = process.env.DB_CONNECTION;
 
@@ -27,7 +27,7 @@ MongoClient.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true }, fu
     if (err) {          
       console.log('There was a problem');
     }
-    console.log(cursor.insertedCount);
+    console.log(`Inserted document count: ${cursor.insertedCount}`);
   });
   client.close();
 }); 
