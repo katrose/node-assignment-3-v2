@@ -3,9 +3,13 @@
  */
 const express = require('express');
 const path = require('path');
+
 const navBar = require('./navBar');
 
 const subscribeRoutes = require('./routes/subscribeRoutes')
+
+const dotenv = require('dotenv').config();
+const mongoose = require('mongoose');
 
 /**
  * EXPRESS/EJS SETUP
@@ -14,6 +18,18 @@ const app = express();
 
 // Allows us to exclude the file extension
 app.set('view engine', 'ejs'); 
+
+/**
+ * DATABASE CONNECTION
+ */
+mongoose.connect(process.env.DB_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true });
+
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('DB Connected!!!');
+});
 
 /**
  * MIDDLEWARE
@@ -50,7 +66,7 @@ app.get('/:page', function(request, response) {
  // This will catch non-404 errors as well
 app.use(function(err, request, response, next) {
   if (err) {
-    // console.log(err)
+    console.log(err);
     response.status(404);
     response.render('filenotfound', {navBar: navBar});
   }
