@@ -13,7 +13,7 @@ MongoClient.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true }, fu
    }
    console.log('build.js: Connected to database');
 
-   const db = client.db("subscriber_db"); // should take the value from .env file and not hard code it?
+   const db = client.db("subscriber_db");
    const collection = db.collection('subscribers');
 
    // If collection doesn't already exist, the following will throw "MongoError: ns not found" in the console. The collection will then be created before calling insertMany, so everything will still run as intended.

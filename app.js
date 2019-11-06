@@ -46,11 +46,11 @@ app.use(express.static(path.join(__dirname, 'assets')));
  * ENDPOINTS
  */
 app.get('/', function(request, response) {
-  response.render('index', {navBar: navBar});
+  response.render('index', { success: false });
 });
 
 app.get('/:page', function(request, response) {
-  response.render(request.params.page, {navBar: navBar}); // params.page = :page
+  response.render(request.params.page, { success: false }); // params.page = :page
 });
 
 /**

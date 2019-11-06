@@ -2,15 +2,17 @@ const express = require("express");
 const subscribeRoutes = express.Router();
 const Subscriber = require('../models/subscriber');
 
-// Serve '/subscribe' page
+/**
+ * Serve the /subscribe page
+ */
 subscribeRoutes.get('/', function(request, response) {
-
-  console.log('get /subscribe');
-
   response.render('subscribe');
-
 });
 
+/**
+ * Post request for newsletter form submission.
+ * For error handling: where can errors occur in this code? 
+ */
 subscribeRoutes.post('/', function(request, response) {
   console.log('get /subscribe');
 
@@ -19,18 +21,22 @@ subscribeRoutes.post('/', function(request, response) {
    */
   if (request.body.adult) {
     request.body.adult = true;
-    console.log(request.body);
   } else {
     request.body.adult = false;
-    console.log(request.body);
   }
 
   // Create a new subscriber document with the request.body object and save it to the database.
   const subscriber = new Subscriber(request.body);
 
   subscriber.save(err => {
-    if (err) throw err;
-    response.redirect("/");
+    if (err) {
+
+      throw err;
+      // Redirect back to submit page with an error message
+    }
+
+    // On success, redirect back to homepage.
+    response.render("index", {success: true});
   });
 });
 
