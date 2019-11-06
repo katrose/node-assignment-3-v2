@@ -1,0 +1,25 @@
+{
+  "name": "create-user",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katrose/node-assignment-3-v2.git"
+  },
+  "author": "Katherine Picazo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katrose/node-assignment-3-v2/issues"
+  },
+  "homepage": "https://github.com/katrose/node-assignment-3-v2#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.8"
+  }
+}
