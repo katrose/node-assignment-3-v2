@@ -58,12 +58,12 @@ app.get('/:page', function(request, response) {
  app.use('/subscribe', subscribeRoutes);
 
 /**
- * Error handler
+ * Default Error handler
  */
 
- // This will catch non-404 errors as well
 app.use(function(err, request, response, next) {
   if (err) {
+    console.log("*******Express Default Handler********");
     console.log(err);
     response.status(404);
     response.render('filenotfound');

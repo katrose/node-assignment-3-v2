@@ -11,9 +11,8 @@ subscribeRoutes.get('/', function(request, response) {
 
 /**
  * Post request for newsletter form submission.
- * For error handling: where can errors occur in this code? 
  */
-subscribeRoutes.post('/', function(request, response) {
+subscribeRoutes.post('/', function(request, response, next) {
 
   // If subscriber has checked the adult checkbox, then the 'adult' attribute will exist in request.body with a value of 'on'. Otherwise, the attribute will not exist at all. We need to explicitly set this value to true or false in request.body to make it consistent with the Subscriber model. We can then use the request.body object to create a new document and save it to the database with Mongoose.
   if (request.body.adult) {
@@ -26,11 +25,14 @@ subscribeRoutes.post('/', function(request, response) {
   const subscriber = new Subscriber(request.body);
 
   subscriber.save(err => {
+
     if (err) {
-      throw err;
+
+      // Redirect back to form if there's an error (wasn't able to test this because I never got any errors when saving documents to database)
+      response.redirect('/');
     }
 
-    // On success, render the home page. I'm using render() instead of redirect() to pass this 'success' variable in order to display the success message on the home page. To avoid EJS errors, this variable will have to be inserted into every GET handler that serves the home page.
+    // On success, render the home page. I'm using render() instead of redirect() to pass this 'success' variable in order to display the success message on the home page. To avoid EJS errors, this variable will have to be passed into every GET handler that serves the home page. This POST handler should be the only place where {success: true}
     response.render("index", {success: true});
   });
 });

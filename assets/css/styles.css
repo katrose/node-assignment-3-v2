@@ -10,7 +10,7 @@ body {
   font-family: 'Lora', serif;
 }
 
-h1, h2, h3, h4, h5, h6, nav, .contact, footer p {
+h1, h2, h3, h4, h5, h6, nav, .contact, footer p, .modal {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -101,6 +101,7 @@ nav .fa-book-open {
 /* ========================== */
 /*  Success Modal             */
 /* ========================== */
+
 /* Ref: https://www.w3schools.com/howto/howto_css_modals.asp */
 
 /* Modal background */
@@ -109,15 +110,24 @@ nav .fa-book-open {
   z-index: 1;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* Modal Box */
 .modal-content {
-  background-color: #fefefe;
   margin: 0 auto;
   padding: 30px;
+
   width: 40vw;
+
+  background-color: #fefefe;
+  color: black;
+
+  border: 4px solid black;
+}
+
+.modal-content h1 {
+  font-size: 2em;
 }
 
 /* The Close Button */
@@ -551,6 +561,7 @@ footer p {
   .red-river {
     grid-area: red-river;
   }
+}
 
 /* MOBILE */
 @media (max-width: 540px) {
