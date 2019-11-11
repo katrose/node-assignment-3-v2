@@ -394,13 +394,6 @@ blockquote q::before {
 }
 
 /* Form Styling */
-.contact form fieldset {
-  margin-bottom: 2em;
-
-  display: flex;
-  flex-direction: column;
-}
-
 .contact form legend {
   padding: 1.1em;
   margin-bottom: 1.1em;
@@ -422,6 +415,7 @@ input:focus, textarea:focus {
 }
 
 .contact input, textarea {
+  margin-top: .3em;
   margin-bottom: 1em;
 }
 
