@@ -10,7 +10,7 @@ body {
   font-family: 'Lora', serif;
 }
 
-h1, h2, h3, h4, h5, h6, nav, .contact, footer p, footer legend {
+h1, h2, h3, h4, h5, h6, nav, .contact, footer p {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -514,7 +514,8 @@ footer {
   color: white;
 
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -528,29 +529,6 @@ footer a {
 
 footer p {
   margin: .5em 0 0 0;
-}
-
-footer .footer-form {
-  display: flex;
-}
-
-.footer-form input[type="submit"]:hover, .footer-form input[type="reset"]:hover{
-  cursor: pointer;
-  
-  background-color: black;
-  color: white;
-}
-
-.footer-form input[type="submit"], .footer-form input[type="reset"] {
-
-  background-color: white;
-  color: black;
-
-  font-family: inherit;
-  font-weight: bold;
-
-  border: 2px solid white;
-  border-radius: 15px;
 }
 
 /* ========================== */

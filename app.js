@@ -1,5 +1,5 @@
 /**
- * MODULE IMPORTS
+ * Module Imports
  */
 const express = require('express');
 const path = require('path');
@@ -10,7 +10,7 @@ const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 
 /**
- * EXPRESS/EJS SETUP
+ * Express/EJS Setup
  */
 const app = express();
 
@@ -18,7 +18,7 @@ const app = express();
 app.set('view engine', 'ejs'); 
 
 /**
- * DATABASE CONNECTION
+ * Database Connection
  */
 mongoose.connect(process.env.DB_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true });
 
@@ -30,7 +30,7 @@ db.once('open', function() {
 });
 
 /**
- * MIDDLEWARE
+ * Middleware
  */
 
 // Read HTTP POST data (this needs to be placed above the POST request)
@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'assets')));
 
 
 /**
- * ENDPOINTS
+ * Endpoints
  */
 app.get('/', function(request, response) {
   response.render('index', { success: false });
@@ -52,13 +52,13 @@ app.get('/:page', function(request, response) {
 });
 
 /**
- * ROUTES
+ * Routes
  */
 
  app.use('/subscribe', subscribeRoutes);
 
 /**
- * 404 HANDLER
+ * Error handler
  */
 
  // This will catch non-404 errors as well
@@ -66,12 +66,12 @@ app.use(function(err, request, response, next) {
   if (err) {
     console.log(err);
     response.status(404);
-    response.render('filenotfound', {navBar: navBar});
+    response.render('filenotfound');
   }
 });
 
 /**
- * SERVER START
+ * Server start
  */
 const PORT = process.env.PORT || 3000;
 
