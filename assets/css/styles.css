@@ -420,7 +420,7 @@ blockquote q::before {
   margin-bottom: .3em;
 }
 
-input:focus, textarea:focus {
+input:focus {
   outline: 0;
 }
 
@@ -433,7 +433,7 @@ input:focus, textarea:focus {
   align-self: flex-start;
 }
 
-.contact input[type="text"], textarea {
+.contact input[type="text"], .contact input[type="email"] {
   padding: .5em;
 
   width: 100%;

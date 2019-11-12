@@ -14,13 +14,12 @@ const mongoose = require('mongoose');
  */
 const app = express();
 
-// Allows us to exclude the file extension
 app.set('view engine', 'ejs'); 
 
 /**
  * Database Connection
  */
-mongoose.connect(process.env.DB_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(process.env.DB_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 
 const db = mongoose.connection;
 
@@ -63,10 +62,18 @@ app.get('/:page', function(request, response) {
 
 app.use(function(err, request, response, next) {
   if (err) {
-    console.log("*******Express Default Handler********");
-    console.log(err);
-    response.status(404);
-    response.render('filenotfound');
+
+    // Redirect to form if error came from form submission
+    if (err.name === "FormSubmissionError") {
+
+      console.log(err);
+      response.redirect('subscribe');
+
+    // All other errors
+    } else {
+      response.status(404);
+      response.render('filenotfound');
+    }
   }
 });
 

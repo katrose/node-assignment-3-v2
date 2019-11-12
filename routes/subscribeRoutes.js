@@ -27,13 +27,16 @@ subscribeRoutes.post('/', function(request, response, next) {
   subscriber.save(err => {
 
     if (err) {
+      // Redirect back to form if there's an error
+      err.name = "FormSubmissionError";
+      err.message = "There was a problem saving to the database";
+      next(err);
+    } else {
 
-      // Redirect back to form if there's an error (wasn't able to test this because I never got any errors when saving documents to database)
-      response.redirect('/');
+      // On success, render the home page. I'm using render() instead of redirect() to pass this 'success' variable in order to display the success message on the home page. To avoid EJS errors, this variable will have to be passed into every GET handler that serves the home page
+      response.render("index", {success: true});
+
     }
-
-    // On success, render the home page. I'm using render() instead of redirect() to pass this 'success' variable in order to display the success message on the home page. To avoid EJS errors, this variable will have to be passed into every GET handler that serves the home page. This POST handler should be the only place where {success: true}
-    response.render("index", {success: true});
   });
 });
 
