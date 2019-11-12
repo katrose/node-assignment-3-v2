@@ -473,6 +473,14 @@ input:focus {
   border-radius: 20px;
 }
 
+.contact .error-msg {
+  margin-bottom: 1.1em;
+
+  color: red;
+
+  font-size: .8em;
+}
+
 /* ========================== */
 /* Thank You Page             */
 /* ========================== */

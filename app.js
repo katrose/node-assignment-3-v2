@@ -46,12 +46,12 @@ app.use(express.static(path.join(__dirname, 'assets')));
  * Endpoints
  */
 
-app.get('/', function(request, response) {
-  response.render('index', { success: false });
+app.get('/', function(req, res) {
+  res.render('index', { success: false });
 });
 
-app.get('/:page', function(request, response) {
-  response.render(request.params.page, { success: false }); // params.page = :page
+app.get('/:page', function(req, res) {
+  res.render(req.params.page, { success: false, errMsg: "" }); // params.page = :page
 });
 
 /**
@@ -64,19 +64,18 @@ app.get('/:page', function(request, response) {
  * Default Error handler
  */
 
-app.use(function(err, request, response, next) {
+app.use(function(err, req, res, next) {
   if (err) {
 
     // Redirect to form if error came from form submission
     if (err.name === "FormSubmissionError") {
-
       console.log(err);
-      response.redirect('subscribe');
+      res.render('subscribe', {errMsg: "That email is already in use. Please enter another email address."}); // currently only one error message because duplicate email is the only way to get an error 
 
     // All other errors
     } else {
-      response.status(404);
-      response.render('filenotfound');
+      res.status(404);
+      res.render('filenotfound');
     }
   }
 });

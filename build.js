@@ -1,15 +1,19 @@
+/**
+ * build.js code taken from in-class demo
+ */
+
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 const subscribers = require('./fixtures/subscribers');
 
 /**
- * CONNECT TO DATABASE AND BUILD 'SUBSCRIBERS' COLLECTION
+ * Connect to database and build 'users' collection
  */
 const uri = process.env.DB_CONNECTION;
 
 MongoClient.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
    if(err) {
-      console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+      console.log('Error occurred while connecting to MongoDB Atlas...\n', err);
    }
    console.log('build.js: Connected to database');
 
