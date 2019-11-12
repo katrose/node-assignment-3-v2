@@ -1,7 +1,7 @@
 # Node Assignment #3 - Create a User
 
 Deployed on Heroku!
-https://protected-woodland-28726.herokuapp.com/
+https://protected-woodland-28726.herokuapp.com/subscribe
 
 ## Assignment Setup
 1. `npm install` to install all dependencies
