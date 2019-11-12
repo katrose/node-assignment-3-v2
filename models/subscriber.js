@@ -10,7 +10,7 @@ const subscriberSchema = new mongoose.Schema(
     email: { 
       type: String, 
       required: true,
-      unique: true
+      unique: true // Made this unique to test for form submission errors
     }, 
      
     adult: { 

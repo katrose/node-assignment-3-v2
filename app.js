@@ -1,6 +1,7 @@
 /**
  * Module Imports
  */
+
 const express = require('express');
 const path = require('path');
 
@@ -12,6 +13,7 @@ const mongoose = require('mongoose');
 /**
  * Express/EJS Setup
  */
+
 const app = express();
 
 app.set('view engine', 'ejs'); 
@@ -19,6 +21,7 @@ app.set('view engine', 'ejs');
 /**
  * Database Connection
  */
+
 mongoose.connect(process.env.DB_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 
 const db = mongoose.connection;
@@ -42,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'assets')));
 /**
  * Endpoints
  */
+
 app.get('/', function(request, response) {
   response.render('index', { success: false });
 });
@@ -80,6 +84,7 @@ app.use(function(err, request, response, next) {
 /**
  * Server start
  */
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function(){
