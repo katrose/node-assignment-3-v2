@@ -15,4 +15,4 @@ https://protected-woodland-28726.herokuapp.com/subscribe
 
 ### Form Submission
 
-Currently the only form error that can be replicated is using an email address already in use in the database.
+Currently the only form error that can be replicated is by using an email address already in use in the database.
